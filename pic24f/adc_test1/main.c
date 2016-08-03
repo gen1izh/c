@@ -1,0 +1,84 @@
+#include <p24fj128ga010.h>
+
+/*
+ * Конфигурация устройства для отладочной платы 
+ * согласно мануалу на Explore16
+ */
+_CONFIG1(JTAGEN_OFF&GCP_OFF&GWRP_OFF&BKBUG_OFF&COE_OFF&FWDTEN_OFF&FNOSC_PRI)
+_CONFIG2(FCKSM_CSDCMD&OSCIOFNC_ON&POSCMOD_HS)
+
+#define channel  7
+#define ainputs  0x0
+
+unsigned int bReq = 0;
+
+/*
+ * Обработчик прерывания по INT3
+ */
+void __attribute__ ((interrupt)) _INT3Interrupt(void) {
+  bReq    = 1;
+  _INT3IF = 0;
+}
+
+/*
+ * Инициализация АЦП
+ */
+void initADC(int adcmask){
+  AD1PCFG = adcmask;   // Задает конфигурацию выводов порта B (на которм висит АЦП)
+  AD1CON1 = 0;         // Процесс преобразования осуществляется вручную
+  AD1CSSL = 0;         // Не будет произведено последовательное сканирование аналоговых каналов ввода
+  AD1CON2 = 0;         // Выбираем мультиплексер MUXA, в качестве опорного напряжения
+                       // Выбирается напряжение питания
+  AD1CON3 = 0x1F02;    // Интервал преобразования и период тактирования
+  
+  AD1CON1bits.ADON = 1; // Включает АЦП
+}
+
+/*
+ * Функция оцифровки 1 значения с АЦП 
+ * возвращает оцифрованное значение
+ */
+int readADC(int ch) {
+
+  AD1CHS            = ch; // Устанавливает  номер тестируемого канала
+  AD1CON1bits.SAMP  = 1;       // Включает процесс выборки входного сигнала
+  
+
+// обеспечение интервала выборки равным 6.25 мкс для 8000000 Мгц тактовой частоты
+  T1CONbits.TON = 1;
+  TMR1          = 0;
+  while (TMR1 < 100);
+  
+
+  AD1CON1bits.SAMP = 0;       // Включает начало преобразования сигнала
+
+  while (!AD1CON1bits.DONE);  // Ожидание конца преробразования
+  
+  return ADC1BUF0;            // Возвращает значение преобразования
+}
+
+/*
+ * Тело основной программы
+ */
+void main(void) {
+  int   a1;
+  float res;
+  
+  TRISA               = 0xff00;
+  INTCON2bits.INT3EP  = 1;  //  Прерывание возникает по спаду
+  
+  _INT3IF = 0;
+  _INT3IP = 4;
+  _INT3IE = 1;
+  
+  initADC(ainputs);
+  
+  while (1) {
+    if (bReq == 1){
+      a1    = readADC( channel );
+      res   = 5.0 / 1024.0 * a1;
+      bReq  = 0;
+    }
+  }
+  return;
+}

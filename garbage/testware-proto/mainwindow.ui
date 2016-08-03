@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>733</width>
+    <height>647</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>testware_proto</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QFormLayout" name="formLayout">
+    <property name="fieldGrowthPolicy">
+     <enum>QFormLayout::AllNonFixedFieldsGrow</enum>
+    </property>
+    <item row="0" column="0">
+     <widget class="QLabel" name="channel1Label">
+      <property name="text">
+       <string>1-ый</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1">
+     <widget class="QLineEdit" name="channel1Edit"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="channel2Label">
+      <property name="text">
+       <string>2-ый</string>
+      </property>
+     </widget>
+    </item>
+    <item row="1" column="1">
+     <widget class="QLineEdit" name="channel2Edit"/>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLabel" name="channel3Label">
+      <property name="text">
+       <string>3-ий</string>
+      </property>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QLineEdit" name="channel3Edit"/>
+    </item>
+    <item row="3" column="0">
+     <widget class="QLabel" name="channel4Label">
+      <property name="text">
+       <string>4-ый</string>
+      </property>
+     </widget>
+    </item>
+    <item row="3" column="1">
+     <widget class="QLineEdit" name="channel4Edit"/>
+    </item>
+    <item row="4" column="0">
+     <widget class="QLabel" name="channel5Label">
+      <property name="text">
+       <string>5-ый</string>
+      </property>
+     </widget>
+    </item>
+    <item row="4" column="1">
+     <widget class="QLineEdit" name="channel5Edit"/>
+    </item>
+    <item row="5" column="0">
+     <widget class="QLabel" name="channel6Label">
+      <property name="text">
+       <string>6-ой</string>
+      </property>
+     </widget>
+    </item>
+    <item row="5" column="1">
+     <widget class="QLineEdit" name="channel6Edit"/>
+    </item>
+    <item row="6" column="0">
+     <widget class="QLabel" name="channel7Label">
+      <property name="text">
+       <string>7-ой</string>
+      </property>
+     </widget>
+    </item>
+    <item row="7" column="0">
+     <widget class="QLabel" name="channel8Label">
+      <property name="text">
+       <string>8-ой</string>
+      </property>
+     </widget>
+    </item>
+    <item row="8" column="0">
+     <widget class="QLabel" name="channel9Label">
+      <property name="text">
+       <string>9-ый</string>
+      </property>
+     </widget>
+    </item>
+    <item row="9" column="0">
+     <widget class="QLabel" name="channel10Label">
+      <property name="text">
+       <string>10-ый</string>
+      </property>
+     </widget>
+    </item>
+    <item row="10" column="0">
+     <widget class="QLabel" name="channel11Label">
+      <property name="text">
+       <string>11-ый</string>
+      </property>
+     </widget>
+    </item>
+    <item row="11" column="0">
+     <widget class="QLabel" name="channel12Label">
+      <property name="text">
+       <string>12-ый</string>
+      </property>
+     </widget>
+    </item>
+    <item row="6" column="1">
+     <widget class="QLineEdit" name="channel7Edit"/>
+    </item>
+    <item row="7" column="1">
+     <widget class="QLineEdit" name="channel8Edit"/>
+    </item>
+    <item row="8" column="1">
+     <widget class="QLineEdit" name="channel9Edit"/>
+    </item>
+    <item row="9" column="1">
+     <widget class="QLineEdit" name="channel10Edit"/>
+    </item>
+    <item row="10" column="1">
+     <widget class="QLineEdit" name="channel11Edit"/>
+    </item>
+    <item row="11" column="1">
+     <widget class="QLineEdit" name="channel12Edit"/>
+    </item>
+    <item row="13" column="0">
+     <widget class="QPushButton" name="initButton">
+      <property name="text">
+       <string>Инициализировать</string>
+      </property>
+     </widget>
+    </item>
+    <item row="13" column="1">
+     <widget class="QGroupBox" name="settingsBox">
+      <property name="title">
+       <string>Настройки</string>
+      </property>
+      <layout class="QFormLayout" name="formLayout_2">
+       <item row="0" column="0">
+        <widget class="QLabel" name="baudrateLabel">
+         <property name="text">
+          <string>Скорсть</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="comPortLabel">
+         <property name="text">
+          <string>Com-порт</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QComboBox" name="comPortsBox"/>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="baudrateBox">
+         <item>
+          <property name="text">
+           <string>9600</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item row="14" column="0">
+     <widget class="QPushButton" name="startButton">
+      <property name="text">
+       <string>Запустить</string>
+      </property>
+     </widget>
+    </item>
+    <item row="15" column="0">
+     <widget class="QPushButton" name="stopButton">
+      <property name="text">
+       <string>Остановить</string>
+      </property>
+     </widget>
+    </item>
+    <item row="16" column="0" colspan="2">
+     <widget class="QPlainTextEdit" name="plainTextEdit"/>
+    </item>
+    <item row="14" column="1">
+     <widget class="QCheckBox" name="debugBox">
+      <property name="text">
+       <string>Отладочный режим</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>733</width>
+     <height>21</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <resources/>
+ <connections/>
+</ui>
